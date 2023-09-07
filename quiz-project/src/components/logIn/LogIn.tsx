@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import SignUpResponse from '../Interface'
+import { LogInResponse } from '../Interface'
 
 
 
@@ -10,7 +10,7 @@ function LogIn() {
     const [message, setMessage] = useState<string>('')
 
     const createUser = async () => {
-        const url = 'https://jv4lxh2izk.execute-api.eu-north-1.amazonaws.com/auth/signup'
+        const url = 'https://jv4lxh2izk.execute-api.eu-north-1.amazonaws.com/auth/login'
         const settings = {
             method: 'POST',
             body: JSON.stringify({
@@ -19,10 +19,11 @@ function LogIn() {
             })
         }
         const response = await fetch(url, settings)
-        const data: SignUpResponse = await response.json()
+        const data: LogInResponse = await response.json()
+        localStorage.setItem("token", data.token || '')
 
         if( data.success ) {
-            setMessage('ANVÄNDARE SKAPADES')
+            setMessage('INLOGNING LYCKADES')
         } else {
             setMessage('NÅGOT GICK FEL')
         }
@@ -46,7 +47,7 @@ function LogIn() {
             <input type="text" placeholder="LÖSENORD" value={password} onChange={event => setPassword(event.target.value)} />
             </label>
 
-            <button onClick={createUser}> SKAPA ANVÄNDARE</button>
+            <button onClick={createUser}> LOGGA IN </button>
       
             <p> {message} </p>
 

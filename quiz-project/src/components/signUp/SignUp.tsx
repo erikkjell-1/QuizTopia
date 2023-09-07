@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import SignUpResponse from '../Interface'
+import { SignUpResponse } from '../Interface'
 
 function SignUp() {
 

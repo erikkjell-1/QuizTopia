@@ -2,24 +2,6 @@ import { useState, useRef, useEffect } from 'react'
 import mapboxgl, { Map as MapGl } from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './Game.css'
-import { ExistingQuiz } from '../Interface';
-
-async function getExistingQuiz() {
-
-    const [existingQuiz, setExistingQuiz] = useState<ExistingQuiz[]>([])
-
-    const url = 'https://fk7zu3f4gj.execute-api.eu-north-1.amazonaws.com/quiz'
-    const settings = {
-        method: 'GET',
-        headers:  {'Content-Type': 'application/json'}
-    }
-    const response = await fetch(url, settings)
-    const data: ExistingQuiz = await response.json()
-
-    if(data.existingQuiz){
-        setExistingQuiz(data.existingQuiz)
-    }
-}
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZXJpa2plbGwiLCJhIjoiY2xsdzJsZ24zMTN3NjNwbnowdnQ0eHEwMSJ9.B2PWYPIiQ9_-HwVynQloIA' as string
 
@@ -58,7 +40,7 @@ function Game() {
         setLng(Number(position.lng.toFixed(4)))
         setZoom(map.getZoom());
     })
-    },[lat, lng, zoom]
+    },[lat, lng, zoom])
 
     return (
 
@@ -68,7 +50,7 @@ function Game() {
                 <input className='quiz--input' placeholder='Quiz-Fråga?' type='text' value={quizQ} onChange={event => setQuizQ(event.target.value)}></input>
                 <input className='quiz--input' placeholder='Quiz-Svar' type='text' value={quizA} onChange={event => setQuizA(event.target.value)}></input>
 
-                <button onClick={addQuiz}>Skapa Quiz</button>
+                <button>Skapa Quiz</button>
 
             </div>
 
@@ -76,12 +58,9 @@ function Game() {
             <div ref={mapContainer} className="map-container" />
 			<p> Center position: {lat} lat, {lng} lng </p>
             </div>
-
-            <div className='getQuiz__container'>
-                <button onClick={getExistingQuiz}>Show existing quizes</button>
-            </div>
         </div>
+    )
+}
     
-    )}
    
     export default Game
