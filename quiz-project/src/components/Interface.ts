@@ -14,23 +14,56 @@ export interface Position {
     lat: number;
 }
 
-export interface ExistingQuiz {
-	existingQuiz:ExistingQuizResponse[];
-	success: boolean;
+export interface Question {
+  question: string;
+  answer: string;
+  location: {
+    longitude: string;
+    latitude: string;
+  }
 }
 
- export interface ExistingQuizResponse {
-	questions: ExistingQuizQuestions[];
-	quizId: string;
-	userId: string;
-	username: string;
-} 
+export interface GetQuiz {
+    questions: {
+      question: string;
+      answer: string;
+      location: {
+        longitude: string;
+        latitude: string;
+      };
+    }[];
+    quizId: string;
+    userId: string;
+  }
+  
 
-export interface ExistingQuizQuestions {
-	answer: string;
-	location: {
-		latitude: number;
-		longitude: number;
-	}
-	question: string;
+export interface ApiSignupResponse {
+    success: boolean;
+    message?: string;
+}
+
+export interface ApiLoginResponse {
+    username: string,
+    success: boolean;
+    message?: string;
+    token: string;
+}
+
+export interface Account {
+    password: string
+    userId: string
+    username: string
+  
+  } 
+
+export interface CreateQuiz {
+    username: string,
+    quizname: string,
+    token?: string
+}
+
+export interface AddQuestion{
+    username: string,
+    question: string,
+    answer: string,
 }
