@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom';
 import mapboxgl, { Map as MapGl } from 'mapbox-gl';
@@ -12,15 +13,18 @@ function DisplayQuiz() {
     const [quizname, setQuizname] = useState<string>('')
     const [question, setQuestion] = useState<string>('')
     const [answer, setAnswer]     = useState<string>('')
+
     const [quizData, setQuizData] = useState<any>(null);
     const [quizzes, setQuizzes]   = useState<any>([])
     const [clickLat, setClickLat] = useState<number>()
     const [clickLng, setClickLng] = useState<number>()
     const mapContainer = useRef(null)
     const mapRef = useRef<MapGl | null>(null)
+    
     const [lat, setLat] = useState<number>(57.7)
     const [lng, setLng] = useState<number>(11.89)
     const [zoom, setZoom] = useState<number>(10)
+
     const markerRef = useRef<mapboxgl.Marker | null>(null)
     const questionRef = useRef<mapboxgl.Marker | null>(null)
     
@@ -146,12 +150,13 @@ function DisplayQuiz() {
             }
             
 return(
-        <div className="quiz-container">
-            
+        <div>
             <h1>VEM VET MEST?</h1>
+            <Link to='/signup'>SKAPA ANVÄNDARE</Link>
+            <Link to='/login'>LOGGA IN</Link>
             <section className="quiz-map" ref={mapContainer}></section>
             <aside>
-                <input type="text" value={quizname}    onChange={event => setQuizname(event.target.value)}/>
+                <input type="text" value={quizname} onChange={event => setQuizname(event.target.value)}/>
                 <button onClick={ handleAddQuiz }>SKAPA QUIZ</button>
             </aside>
             <h1>KLICKA PÅ KARTAN FÖR ATT SKICKA MED KOORDINATER</h1>

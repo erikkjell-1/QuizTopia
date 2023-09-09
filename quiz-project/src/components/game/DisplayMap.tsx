@@ -4,6 +4,7 @@ import './map.css'
   import mapboxgl, { Map as MapGl } from 'mapbox-gl';
   import 'mapbox-gl/dist/mapbox-gl.css';
   import { Position, GetQuiz, AddQuestion, Question } from '../Interface';
+  import { Link } from 'react-router-dom';
 
 	mapboxgl.accessToken = 'pk.eyJ1IjoiamFjb2Jqb2gwOCIsImEiOiJjbGx6M2pqMXYwZTZ5M2NvNzNscm5rZWtuIn0.C2QkVLDoLFvrae_e65EGpg';
 
@@ -96,19 +97,16 @@ import './map.css'
       }
 
 	return (
-	<div className='map-page'>
- 		<div className='map-page-container'>
+	<div>
 			<header>
-				<h1>Play the quizzes</h1>
+                <Link to='/quiz'>TILLBAKA TILL QUIZ</Link>
 			</header>
-			<main>
-				<section className='map-page-container__section'>
+				<section >
 			 		<div ref={mapContainer} className="quiz-map" />
 					<p> Center position: {lat} lat, {lng} lng </p>
 				</section>
-			 </main>
+                
  		</div>
-	</div>
  	)
 	} 
 
