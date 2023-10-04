@@ -8,7 +8,7 @@ function SignUp() {
     const [message, setMessage] = useState<string>('')
 
     const createUser = async () => {
-        const url = 'https://jv4lxh2izk.execute-api.eu-north-1.amazonaws.com/auth/signup'
+        const url = 'https://fk7zu3f4gj.execute-api.eu-north-1.amazonaws.com/auth/signup'
         const settings = {
             method: 'POST',
             body: JSON.stringify({

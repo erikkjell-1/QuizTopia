@@ -92,7 +92,6 @@ function DisplayQuiz() {
                 const token = localStorage.getItem('token')
                 const lat = clickLat
                 const long = clickLng
-                console.log('question:', question,'Answer:', answer);
                 const url = 'https://fk7zu3f4gj.execute-api.eu-north-1.amazonaws.com/quiz/question'
                 const settings = {
                     method: 'POST',

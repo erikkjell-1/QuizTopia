@@ -10,7 +10,7 @@ function LogIn() {
     const [message, setMessage] = useState<string>('')
 
     const createUser = async () => {
-        const url = 'https://jv4lxh2izk.execute-api.eu-north-1.amazonaws.com/auth/login'
+        const url = 'https://fk7zu3f4gj.execute-api.eu-north-1.amazonaws.com/auth/login'
         const settings = {
             method: 'POST',
             body: JSON.stringify({
@@ -28,10 +28,6 @@ function LogIn() {
             setMessage('NÅGOT GICK FEL')
         }
     }
-
-
-
-
 
     return (
         <div className="login">
